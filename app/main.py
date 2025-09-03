@@ -2,6 +2,13 @@ from __future__ import annotations
 from typing import Any
 
 
+class AliveList(list):
+    def __repr__(self):
+        return "[" + ", ".join(
+            f"{{Name: {a.name}, Health: {a.health}, Hidden: {a.hidden}}}" for a in self
+        ) + "]"
+
+
 class Animal:
 
     alive: list[Animal] = []
@@ -9,8 +16,6 @@ class Animal:
     def __init__(
             self,
             name: str,
-            *args: Any,
-            **kwargs,
     ) -> None:
 
         self.name = name
